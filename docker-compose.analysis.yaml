@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  analysis-app:
+    build:
+      context: ./src-analysis
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_HOST=storage
+      - MYSQL_PORT=3306
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+      - MYSQL_DB=zipkin
+      - BASE_PATH=/opt/app/analysis
+    volumes:
+      - ./analysis:/opt/app/analysis/
+    depends_on:
+      - storage
+    networks:
+      - iot-network
+
+  storage:
+    image: ghcr.io/openzipkin/zipkin-mysql:2.24.2
+    volumes:
+      - mysql_data:/var/lib/mysql
+    container_name: zipkin-mysql
+    ports:
+     - "3306:3306"
+    networks:
+      - iot-network
+
+volumes:
+  mysql_data:
+
+networks:
+  iot-network:
+    driver: bridge

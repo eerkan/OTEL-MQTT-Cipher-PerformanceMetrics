@@ -1,0 +1,1 @@
+docker compose -f docker-compose.exp.final.yaml up --build

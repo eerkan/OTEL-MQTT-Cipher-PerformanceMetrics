@@ -1,0 +1,117 @@
+version: '3.8'
+
+services:
+  subscriber-app-1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      DOWNSTREAM_MQTT_HOST: mosquitto-gateway-1
+      DOWNSTREAM_MQTT_CLIENT_ID: subscriber-app-1
+      SERVICE_NAME: subscriber-app-1
+      ZIPKIN_HOST: zipkin
+      MODE: subscriber
+      RANDOM_DATA_TYPE: exp
+      EXP_CIPHERS: AES,Blowfish,Camellia,CAST5,IDEA,SEED,TripleDES
+      EXP_SIZES: 16,64,128,256,512,1024,2048
+      EXP_SAMPLES: 100
+      EXP_KEY: RbSRvz9PaBTj6Qqv
+      DOWNSTREAM_SUBSCRIBE_TOPICS: "#"
+    depends_on:
+      - mosquitto-gateway-1
+      - zipkin
+    networks:
+      - iot-network
+
+  publisher-app-1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      UPSTREAM_MQTT_HOST: mosquitto-gateway-1
+      UPSTREAM_MQTT_CLIENT_ID: publisher-app-1
+      SERVICE_NAME: publisher-app-1
+      ZIPKIN_HOST: zipkin
+      MODE: publisher
+      RANDOM_DATA_TYPE: exp
+      EXP_CIPHERS: AES,Blowfish,Camellia,CAST5,IDEA,SEED,TripleDES
+      EXP_SIZES: 16,64,128,256,512,1024,2048
+      EXP_SAMPLES: 100
+      EXP_KEY: RbSRvz9PaBTj6Qqv
+      RANDOM_DATA_INTERVAL: 100
+      UPSTREAM_PUBLISH_TOPIC: exp-topic
+    depends_on:
+      - mosquitto-gateway-1
+      - zipkin
+    networks:
+      - iot-network
+
+  mosquitto-gateway-1:
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1801:1883"
+    volumes:
+      - ./mosquitto:/etc/mosquitto
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-gateway-1:/mosquitto/data
+    networks:
+      iot-network:
+
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin:${TAG:-latest}
+    container_name: zipkin-iot
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=storage
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+    depends_on:
+      - storage
+    ports:
+      - "9411:9411"
+    networks:
+      - iot-network
+
+  storage:
+    image: ghcr.io/openzipkin/zipkin-mysql:${TAG:-latest}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    container_name: mysql
+    ports:
+     - 3306:3306
+    networks:
+      - iot-network
+
+  dependencies:
+    image: ghcr.io/openzipkin/zipkin-dependencies
+    container_name: dependencies
+    user: root
+    entrypoint: /usr/sbin/crond -f
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=storage
+      # Add the baked-in username and password for the zipkin-mysql image
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+    networks:
+      - iot-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    networks:
+      - iot-network
+
+volumes:
+  mosquitto-gateway-1:
+  mysql_data:
+
+networks:
+  iot-network:
+    driver: bridge

@@ -1,0 +1,202 @@
+version: '3.8'
+
+services:
+  publisher-app-1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      UPSTREAM_MQTT_HOST: mosquitto-gateway-1
+      UPSTREAM_MQTT_CLIENT_ID: publisher-app-1
+      SERVICE_NAME: publisher-app-1
+      ZIPKIN_HOST: zipkin
+      MODE: publisher
+      RANDOM_DATA_TYPE: exp
+      EXP_CIPHERS: AES,Blowfish,Camellia,CAST5,IDEA,SEED,TripleDES
+      EXP_SIZES: 16,64,128,256,512,1024,2048
+      EXP_SAMPLES: 1000
+      EXP_KEY: RbSRvz9PaBTj6Qqv
+      RANDOM_DATA_INTERVAL: 50
+      UPSTREAM_PUBLISH_TOPIC: exp-topic
+    depends_on:
+      - zipkin
+      - mosquitto-gateway-1
+    networks:
+      - iot-network
+
+  subscriber-app-1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+      no_cache: true
+    environment:
+      DOWNSTREAM_MQTT_HOST: mosquitto-gateway-4
+      DOWNSTREAM_MQTT_CLIENT_ID: subscriber-app-1
+      SERVICE_NAME: subscriber-app-1
+      ZIPKIN_HOST: zipkin
+      MODE: subscriber
+      RANDOM_DATA_TYPE: exp
+      EXP_CIPHERS: AES,Blowfish,Camellia,CAST5,IDEA,SEED,TripleDES
+      EXP_SIZES: 16,64,128,256,512,1024,2048
+      EXP_SAMPLES: 1000
+      EXP_KEY: RbSRvz9PaBTj6Qqv
+      DOWNSTREAM_SUBSCRIBE_TOPICS: "#"
+    depends_on:
+      - zipkin
+      - mosquitto-gateway-4
+    networks:
+      - iot-network
+
+  gateway-app-1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      UPSTREAM_MQTT_HOST: mosquitto-gateway-2
+      UPSTREAM_MQTT_CLIENT_ID: gateway-app-1-upstream
+      SERVICE_NAME: gateway-app-1
+      DOWNSTREAM_MQTT_HOST: mosquitto-gateway-1
+      DOWNSTREAM_MQTT_CLIENT_ID: gateway-app-1-downstream
+      ZIPKIN_HOST: zipkin
+      MODE: gateway
+    depends_on:
+      - zipkin
+      - mosquitto-gateway-1
+      - mosquitto-gateway-2
+    networks:
+      - iot-network
+
+  gateway-app-2:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      UPSTREAM_MQTT_HOST: mosquitto-gateway-3
+      UPSTREAM_MQTT_CLIENT_ID: gateway-app-2-upstream
+      DOWNSTREAM_MQTT_HOST: mosquitto-gateway-2
+      DOWNSTREAM_MQTT_CLIENT_ID: gateway-app-2-downstream
+      SERVICE_NAME: gateway-app-2
+      ZIPKIN_HOST: zipkin
+      MODE: gateway
+    depends_on:
+      - zipkin
+      - mosquitto-gateway-2
+      - mosquitto-gateway-3
+    networks:
+      - iot-network
+
+  gateway-app-3:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      UPSTREAM_MQTT_HOST: mosquitto-gateway-4
+      UPSTREAM_MQTT_CLIENT_ID: gateway-app-3-upstream
+      DOWNSTREAM_MQTT_HOST: mosquitto-gateway-3
+      DOWNSTREAM_MQTT_CLIENT_ID: gateway-app-3-downstream
+      SERVICE_NAME: gateway-app-3
+      ZIPKIN_HOST: zipkin
+      MODE: gateway
+    depends_on:
+      - zipkin
+      - mosquitto-gateway-3
+      - mosquitto-gateway-4
+    networks:
+      - iot-network
+
+  mosquitto-gateway-1:
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1801:1883"
+    volumes:
+      - ./mosquitto:/etc/mosquitto
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-gateway-1:/mosquitto/data
+    networks:
+      iot-network:
+
+  mosquitto-gateway-2:
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1802:1883"
+    volumes:
+      - ./mosquitto:/etc/mosquitto
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-gateway-2:/mosquitto/data
+    networks:
+      - iot-network
+
+  mosquitto-gateway-3:
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1803:1883"
+    volumes:
+      - ./mosquitto:/etc/mosquitto
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-gateway-3:/mosquitto/data
+    networks:
+      - iot-network
+
+  mosquitto-gateway-4:
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1804:1883"
+    volumes:
+      - ./mosquitto:/etc/mosquitto
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-gateway-4:/mosquitto/data
+    networks:
+      - iot-network
+
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin:2.24.2
+    container_name: zipkin-iot
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=storage
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+    depends_on:
+      - storage
+    ports:
+      - "9411:9411"
+    networks:
+      - iot-network
+
+  storage:
+    image: ghcr.io/openzipkin/zipkin-mysql:2.24.2
+    volumes:
+      - mysql_data:/var/lib/mysql
+    container_name: zipkin-mysql
+    ports:
+     - "3306:3306"
+    networks:
+      - iot-network
+
+  dependencies:
+    image: ghcr.io/openzipkin/zipkin-dependencies
+    container_name: dependencies
+    user: root
+    entrypoint: /usr/sbin/crond -f
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=storage
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+    networks:
+      - iot-network
+
+volumes:
+  mosquitto-gateway-1:
+  mosquitto-gateway-2:
+  mosquitto-gateway-3:
+  mosquitto-gateway-4:
+  mysql_data:
+
+networks:
+  iot-network:
+    driver: bridge
