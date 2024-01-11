@@ -34,10 +34,12 @@ docker compose -f docker-compose.analysis.yaml up --build
 Grafikler analysis klasörü altında oluşturulacaktır.
 
 ---
+
 Projeyi ayağa kaldırdıktan sonra aşağıdaki adreslerden servislere erişebilirsiniz:
 
 http://localhost:9411/zipkin/  adresinden zipkin arayüzüne erişebilirsiniz.\
 1801, 1802, 1803, 1804 portlarından MQTT'ye erişebilirsiniz.
+
 ---
 
 Gözlem sırasında elde edilen verile sql-dump klasörü altındadır.
