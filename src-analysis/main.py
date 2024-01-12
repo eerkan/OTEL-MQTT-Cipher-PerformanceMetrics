@@ -175,6 +175,7 @@ for cipher_algorithm in analysis:
 def plot_analysis(analysis, key, title="", xlabel="", ylabel=""):
     data = {}
     sizes = []
+    comparison = {}
     for cipher_algorithm in analysis:
         for size in analysis[cipher_algorithm]:
             if size not in sizes:
@@ -185,6 +186,17 @@ def plot_analysis(analysis, key, title="", xlabel="", ylabel=""):
             if cipher_algorithm not in data:
                 data[cipher_algorithm] = []
             data[cipher_algorithm].append(analysis[cipher_algorithm][size][key])
+            if size not in comparison:
+                comparison[size] = []
+            comparison[size].append((cipher_algorithm, analysis[cipher_algorithm][size][key]))
+
+    print("Comparison: " + key)
+    for size in comparison:
+        comparison[size].sort(key=lambda x: x[1])
+        comparison_row = "Size: " + str(size) + ": "
+        for i in range(len(comparison[size])):
+            comparison_row += comparison[size][i][0] + ", "
+        print(comparison_row)
 
     index = np.arange(len(sizes))
     bar_width = 0.1
@@ -204,6 +216,7 @@ def plot_analysis(analysis, key, title="", xlabel="", ylabel=""):
     plt.savefig(base_path + title + ".png", dpi=300)
     plt.show()
     plt.close()
+    print()
 
 
 plot_analysis(analysis, "data_change_rate", title="Data Growth Rate", xlabel="Data Size", ylabel="Data Growth Rate (%)")
