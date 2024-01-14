@@ -1,0 +1,632 @@
+{
+    "CAST5": {
+        "2048": {
+            "encrpytion_memory_usage": 10286.75,
+            "decrpytion_memory_usage": 10463.762,
+            "encrpytion_average_execution_time": 4.9016378237865866e-05,
+            "decrpytion_average_execution_time": 4.423654166748747e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2056.0,
+            "latency": 0.008611599044236551,
+            "count": 1000,
+            "data_change_rate": 1.00390625
+        },
+        "128": {
+            "encrpytion_memory_usage": 2548.519,
+            "decrpytion_memory_usage": 2431.343,
+            "encrpytion_average_execution_time": 3.881994710536674e-05,
+            "decrpytion_average_execution_time": 3.400800740928389e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 136.0,
+            "latency": 0.008145804034008003,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "64": {
+            "encrpytion_memory_usage": 2544.039,
+            "decrpytion_memory_usage": 2320.184,
+            "encrpytion_average_execution_time": 3.572639112826437e-05,
+            "decrpytion_average_execution_time": 3.6514060979243366e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 72.0,
+            "latency": 0.008152129036514055,
+            "count": 1000,
+            "data_change_rate": 1.125
+        },
+        "1024": {
+            "encrpytion_memory_usage": 6579.429,
+            "decrpytion_memory_usage": 6025.749,
+            "encrpytion_average_execution_time": 4.859932474209927e-05,
+            "decrpytion_average_execution_time": 3.9097598375519736e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1032.0,
+            "latency": 0.0083533750390976,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        },
+        "32": {
+            "encrpytion_memory_usage": 3037.782,
+            "decrpytion_memory_usage": 3611.256,
+            "encrpytion_average_execution_time": 4.4377455313224344e-05,
+            "decrpytion_average_execution_time": 3.743445890722796e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 40.0,
+            "latency": 0.009244969037434445,
+            "count": 1000,
+            "data_change_rate": 1.25
+        },
+        "512": {
+            "encrpytion_memory_usage": 4289.059,
+            "decrpytion_memory_usage": 4613.428,
+            "encrpytion_average_execution_time": 5.226624687202275e-05,
+            "decrpytion_average_execution_time": 3.6204937583534046e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 520.0,
+            "latency": 0.008340584036204923,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "16": {
+            "encrpytion_memory_usage": 3029.5575575575576,
+            "decrpytion_memory_usage": 2578.8868868868867,
+            "encrpytion_average_execution_time": 3.3366879630317396e-05,
+            "decrpytion_average_execution_time": 3.1081417965161074e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 24.0,
+            "latency": 0.008077046077127455,
+            "count": 999,
+            "data_change_rate": 1.5
+        },
+        "256": {
+            "encrpytion_memory_usage": 3852.468,
+            "decrpytion_memory_usage": 2953.639,
+            "encrpytion_average_execution_time": 3.702605896978639e-05,
+            "decrpytion_average_execution_time": 3.5842597048031166e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 264.0,
+            "latency": 0.008283572035842597,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        }
+    },
+    "Blowfish": {
+        "256": {
+            "encrpytion_memory_usage": 2847.963,
+            "decrpytion_memory_usage": 2912.194,
+            "encrpytion_average_execution_time": 6.894179130904377e-05,
+            "decrpytion_average_execution_time": 6.771727031446062e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 264.0,
+            "latency": 0.008359095067717256,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        },
+        "64": {
+            "encrpytion_memory_usage": 3572.227,
+            "decrpytion_memory_usage": 2421.901,
+            "encrpytion_average_execution_time": 6.862575080594979e-05,
+            "decrpytion_average_execution_time": 7.767724804580211e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 72.0,
+            "latency": 0.008481392077677235,
+            "count": 1000,
+            "data_change_rate": 1.125
+        },
+        "1024": {
+            "encrpytion_memory_usage": 5983.454,
+            "decrpytion_memory_usage": 5987.822,
+            "encrpytion_average_execution_time": 7.411116958246566e-05,
+            "decrpytion_average_execution_time": 6.917616754071787e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1032.0,
+            "latency": 0.008466489069176174,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        },
+        "2048": {
+            "encrpytion_memory_usage": 11530.267,
+            "decrpytion_memory_usage": 10431.029,
+            "encrpytion_average_execution_time": 8.094321261160076e-05,
+            "decrpytion_average_execution_time": 7.468913137563504e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2056.0,
+            "latency": 0.008637692074689136,
+            "count": 1000,
+            "data_change_rate": 1.00390625
+        },
+        "16": {
+            "encrpytion_memory_usage": 2974.3063063063064,
+            "decrpytion_memory_usage": 2906.945945945946,
+            "encrpytion_average_execution_time": 7.019016189147365e-05,
+            "decrpytion_average_execution_time": 6.535655668087386e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 24.0,
+            "latency": 0.008207365430721932,
+            "count": 999,
+            "data_change_rate": 1.5
+        },
+        "512": {
+            "encrpytion_memory_usage": 4685.76,
+            "decrpytion_memory_usage": 4282.315,
+            "encrpytion_average_execution_time": 7.171994299278594e-05,
+            "decrpytion_average_execution_time": 6.616803645738401e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 520.0,
+            "latency": 0.00849807306616803,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "128": {
+            "encrpytion_memory_usage": 2810.511,
+            "decrpytion_memory_usage": 3103.622,
+            "encrpytion_average_execution_time": 6.955854283296503e-05,
+            "decrpytion_average_execution_time": 6.353833217872307e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 136.0,
+            "latency": 0.008311642063538332,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "32": {
+            "encrpytion_memory_usage": 3696.811,
+            "decrpytion_memory_usage": 2213.4,
+            "encrpytion_average_execution_time": 6.642446626210586e-05,
+            "decrpytion_average_execution_time": 6.775461297365837e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 40.0,
+            "latency": 0.008418444067754613,
+            "count": 1000,
+            "data_change_rate": 1.25
+        }
+    },
+    "Camellia": {
+        "16": {
+            "encrpytion_memory_usage": 3626.1141141141143,
+            "decrpytion_memory_usage": 2281.3763763763764,
+            "encrpytion_average_execution_time": 3.6062559989692124e-05,
+            "decrpytion_average_execution_time": 3.167045382746459e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 32.0,
+            "latency": 0.008114822854493277,
+            "count": 999,
+            "data_change_rate": 2.0
+        },
+        "64": {
+            "encrpytion_memory_usage": 3028.372,
+            "decrpytion_memory_usage": 3048.6,
+            "encrpytion_average_execution_time": 3.5846635233610866e-05,
+            "decrpytion_average_execution_time": 3.585730664781295e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 80.0,
+            "latency": 0.008386553035857303,
+            "count": 1000,
+            "data_change_rate": 1.25
+        },
+        "32": {
+            "encrpytion_memory_usage": 2983.718,
+            "decrpytion_memory_usage": 2321.318,
+            "encrpytion_average_execution_time": 3.527441961341537e-05,
+            "decrpytion_average_execution_time": 3.6054803465958686e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 48.0,
+            "latency": 0.008273068036054806,
+            "count": 1000,
+            "data_change_rate": 1.5
+        },
+        "2048": {
+            "encrpytion_memory_usage": 10802.349,
+            "decrpytion_memory_usage": 10328.903,
+            "encrpytion_average_execution_time": 4.881893339916133e-05,
+            "decrpytion_average_execution_time": 5.1095425384119156e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2064.0,
+            "latency": 0.008483186051095439,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        },
+        "1024": {
+            "encrpytion_memory_usage": 6630.259,
+            "decrpytion_memory_usage": 6117.204,
+            "encrpytion_average_execution_time": 4.6164419647539036e-05,
+            "decrpytion_average_execution_time": 4.051753258681856e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1040.0,
+            "latency": 0.008437598040517533,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "256": {
+            "encrpytion_memory_usage": 3405.784,
+            "decrpytion_memory_usage": 3384.329,
+            "encrpytion_average_execution_time": 3.6809545155847446e-05,
+            "decrpytion_average_execution_time": 4.031011590268463e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 272.0,
+            "latency": 0.008253992040310118,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "128": {
+            "encrpytion_memory_usage": 3915.22,
+            "decrpytion_memory_usage": 2991.094,
+            "encrpytion_average_execution_time": 3.714964233222417e-05,
+            "decrpytion_average_execution_time": 3.574612824013457e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 144.0,
+            "latency": 0.008199091035746122,
+            "count": 1000,
+            "data_change_rate": 1.125
+        },
+        "512": {
+            "encrpytion_memory_usage": 4034.15,
+            "decrpytion_memory_usage": 4742.241,
+            "encrpytion_average_execution_time": 4.125626775203273e-05,
+            "decrpytion_average_execution_time": 3.7377995147835466e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 528.0,
+            "latency": 0.00838450703737799,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        }
+    },
+    "SEED": {
+        "64": {
+            "encrpytion_memory_usage": 2399.763,
+            "decrpytion_memory_usage": 2427.994,
+            "encrpytion_average_execution_time": 3.9571152301505206e-05,
+            "decrpytion_average_execution_time": 3.1873279804131014e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 80.0,
+            "latency": 0.008230419031873276,
+            "count": 1000,
+            "data_change_rate": 1.25
+        },
+        "16": {
+            "encrpytion_memory_usage": 2840.894894894895,
+            "decrpytion_memory_usage": 2540.5595595595596,
+            "encrpytion_average_execution_time": 3.76884375539915e-05,
+            "decrpytion_average_execution_time": 3.6317613345241774e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 32.0,
+            "latency": 0.008242140176457746,
+            "count": 999,
+            "data_change_rate": 2.0
+        },
+        "512": {
+            "encrpytion_memory_usage": 4468.186,
+            "decrpytion_memory_usage": 4325.14,
+            "encrpytion_average_execution_time": 4.0571750898379834e-05,
+            "decrpytion_average_execution_time": 3.820147487567738e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 528.0,
+            "latency": 0.008183373038201469,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        },
+        "32": {
+            "encrpytion_memory_usage": 3404.074,
+            "decrpytion_memory_usage": 2223.934,
+            "encrpytion_average_execution_time": 4.199288642848842e-05,
+            "decrpytion_average_execution_time": 3.141053166473284e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 48.0,
+            "latency": 0.008170855031410523,
+            "count": 1000,
+            "data_change_rate": 1.5
+        },
+        "256": {
+            "encrpytion_memory_usage": 3748.358,
+            "decrpytion_memory_usage": 3293.792,
+            "encrpytion_average_execution_time": 3.769224073039368e-05,
+            "decrpytion_average_execution_time": 3.435949797858484e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 272.0,
+            "latency": 0.008304379034359504,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "128": {
+            "encrpytion_memory_usage": 2975.82,
+            "decrpytion_memory_usage": 2424.111,
+            "encrpytion_average_execution_time": 3.58519344299566e-05,
+            "decrpytion_average_execution_time": 3.5320991330081596e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 144.0,
+            "latency": 0.00826627403532099,
+            "count": 1000,
+            "data_change_rate": 1.125
+        },
+        "1024": {
+            "encrpytion_memory_usage": 6486.439,
+            "decrpytion_memory_usage": 6726.917,
+            "encrpytion_average_execution_time": 5.053522996604443e-05,
+            "decrpytion_average_execution_time": 4.482408391777426e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1040.0,
+            "latency": 0.008343591044824083,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "2048": {
+            "encrpytion_memory_usage": 10087.83,
+            "decrpytion_memory_usage": 10448.939,
+            "encrpytion_average_execution_time": 5.9038491308456287e-05,
+            "decrpytion_average_execution_time": 5.518732371274382e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2064.0,
+            "latency": 0.008555072055187333,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        }
+    },
+    "AES": {
+        "2048": {
+            "encrpytion_memory_usage": 10753.437,
+            "decrpytion_memory_usage": 10520.245,
+            "encrpytion_average_execution_time": 3.796820674324408e-05,
+            "decrpytion_average_execution_time": 4.250708332983777e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2064.0,
+            "latency": 0.008521938042507086,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        },
+        "64": {
+            "encrpytion_memory_usage": 3150.807,
+            "decrpytion_memory_usage": 3231.492,
+            "encrpytion_average_execution_time": 3.36434701748658e-05,
+            "decrpytion_average_execution_time": 3.604889867710881e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 80.0,
+            "latency": 0.008240704036048903,
+            "count": 1000,
+            "data_change_rate": 1.25
+        },
+        "32": {
+            "encrpytion_memory_usage": 2964.098,
+            "decrpytion_memory_usage": 2832.171,
+            "encrpytion_average_execution_time": 3.540933533804491e-05,
+            "decrpytion_average_execution_time": 3.239769479841925e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 48.0,
+            "latency": 0.008380145032397706,
+            "count": 1000,
+            "data_change_rate": 1.5
+        },
+        "16": {
+            "encrpytion_memory_usage": 3093.4664664664665,
+            "decrpytion_memory_usage": 2297.3313313313315,
+            "encrpytion_average_execution_time": 3.8981760592872015e-05,
+            "decrpytion_average_execution_time": 3.243087518454955e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 32.0,
+            "latency": 0.008123155187586039,
+            "count": 999,
+            "data_change_rate": 2.0
+        },
+        "256": {
+            "encrpytion_memory_usage": 3406.784,
+            "decrpytion_memory_usage": 3537.174,
+            "encrpytion_average_execution_time": 3.617488741292618e-05,
+            "decrpytion_average_execution_time": 3.622683664434589e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 272.0,
+            "latency": 0.008417868036226834,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "128": {
+            "encrpytion_memory_usage": 2618.228,
+            "decrpytion_memory_usage": 2859.446,
+            "encrpytion_average_execution_time": 3.999369271332398e-05,
+            "decrpytion_average_execution_time": 3.55294446926564e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 144.0,
+            "latency": 0.008209637035529448,
+            "count": 1000,
+            "data_change_rate": 1.125
+        },
+        "1024": {
+            "encrpytion_memory_usage": 6075.455,
+            "decrpytion_memory_usage": 6441.658,
+            "encrpytion_average_execution_time": 3.9183410088298844e-05,
+            "decrpytion_average_execution_time": 3.519078274257481e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1040.0,
+            "latency": 0.008489371035190783,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "512": {
+            "encrpytion_memory_usage": 4041.832,
+            "decrpytion_memory_usage": 4414.734,
+            "encrpytion_average_execution_time": 3.5714658006327225e-05,
+            "decrpytion_average_execution_time": 3.355300528346561e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 528.0,
+            "latency": 0.008228335033553007,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        }
+    },
+    "IDEA": {
+        "128": {
+            "encrpytion_memory_usage": 2550.52,
+            "decrpytion_memory_usage": 2784.606,
+            "encrpytion_average_execution_time": 3.4347374457865955e-05,
+            "decrpytion_average_execution_time": 3.350474053877406e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 136.0,
+            "latency": 0.008303619033504748,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "2048": {
+            "encrpytion_memory_usage": 10120.597,
+            "decrpytion_memory_usage": 10643.304,
+            "encrpytion_average_execution_time": 5.492025864077732e-05,
+            "decrpytion_average_execution_time": 5.289216386154294e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2056.0,
+            "latency": 0.008538349052892158,
+            "count": 1000,
+            "data_change_rate": 1.00390625
+        },
+        "1024": {
+            "encrpytion_memory_usage": 6024.404,
+            "decrpytion_memory_usage": 6498.631,
+            "encrpytion_average_execution_time": 4.559622542001307e-05,
+            "decrpytion_average_execution_time": 4.481967887841165e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1032.0,
+            "latency": 0.008388129044819679,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        },
+        "256": {
+            "encrpytion_memory_usage": 4685.064,
+            "decrpytion_memory_usage": 2962.384,
+            "encrpytion_average_execution_time": 4.3148593977093694e-05,
+            "decrpytion_average_execution_time": 3.6314892087830234e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 264.0,
+            "latency": 0.008383822036314886,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        },
+        "16": {
+            "encrpytion_memory_usage": 3433.907907907908,
+            "decrpytion_memory_usage": 2358.164164164164,
+            "encrpytion_average_execution_time": 3.4705022451569426e-05,
+            "decrpytion_average_execution_time": 3.272028460686614e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 24.0,
+            "latency": 0.008161073105793368,
+            "count": 999,
+            "data_change_rate": 1.5
+        },
+        "32": {
+            "encrpytion_memory_usage": 3031.599,
+            "decrpytion_memory_usage": 2934.099,
+            "encrpytion_average_execution_time": 3.4382102836389093e-05,
+            "decrpytion_average_execution_time": 3.768705722177401e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 40.0,
+            "latency": 0.008391888037687053,
+            "count": 1000,
+            "data_change_rate": 1.25
+        },
+        "512": {
+            "encrpytion_memory_usage": 3977.074,
+            "decrpytion_memory_usage": 4308.181,
+            "encrpytion_average_execution_time": 4.8419499973533676e-05,
+            "decrpytion_average_execution_time": 3.789332855376415e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 520.0,
+            "latency": 0.008291106037893329,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "64": {
+            "encrpytion_memory_usage": 3987.951,
+            "decrpytion_memory_usage": 2666.357,
+            "encrpytion_average_execution_time": 3.5902685369364915e-05,
+            "decrpytion_average_execution_time": 3.4509335120674223e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 72.0,
+            "latency": 0.008252416034509345,
+            "count": 1000,
+            "data_change_rate": 1.125
+        }
+    },
+    "TripleDES": {
+        "128": {
+            "encrpytion_memory_usage": 2521.643,
+            "decrpytion_memory_usage": 2402.528,
+            "encrpytion_average_execution_time": 3.8101039128378035e-05,
+            "decrpytion_average_execution_time": 3.4498544118832795e-05,
+            "raw_data_size": 128.0,
+            "encrypted_data_size": 136.0,
+            "latency": 0.008326107034498546,
+            "count": 1000,
+            "data_change_rate": 1.0625
+        },
+        "1024": {
+            "encrpytion_memory_usage": 5996.264,
+            "decrpytion_memory_usage": 5999.773,
+            "encrpytion_average_execution_time": 6.891443775384687e-05,
+            "decrpytion_average_execution_time": 6.323168444214389e-05,
+            "raw_data_size": 1024.0,
+            "encrypted_data_size": 1032.0,
+            "latency": 0.00837207506323169,
+            "count": 1000,
+            "data_change_rate": 1.0078125
+        },
+        "32": {
+            "encrpytion_memory_usage": 2860.107,
+            "decrpytion_memory_usage": 2212.095,
+            "encrpytion_average_execution_time": 3.383796219713986e-05,
+            "decrpytion_average_execution_time": 3.226138075115159e-05,
+            "raw_data_size": 32.0,
+            "encrypted_data_size": 40.0,
+            "latency": 0.00817592403226137,
+            "count": 1000,
+            "data_change_rate": 1.25
+        },
+        "64": {
+            "encrpytion_memory_usage": 2388.528,
+            "decrpytion_memory_usage": 3271.886,
+            "encrpytion_average_execution_time": 3.772528789704666e-05,
+            "decrpytion_average_execution_time": 3.667670491267927e-05,
+            "raw_data_size": 64.0,
+            "encrypted_data_size": 72.0,
+            "latency": 0.008333274036676684,
+            "count": 1000,
+            "data_change_rate": 1.125
+        },
+        "256": {
+            "encrpytion_memory_usage": 2860.416,
+            "decrpytion_memory_usage": 2931.965,
+            "encrpytion_average_execution_time": 4.195651400368661e-05,
+            "decrpytion_average_execution_time": 4.157710378058255e-05,
+            "raw_data_size": 256.0,
+            "encrypted_data_size": 264.0,
+            "latency": 0.0082705640415771,
+            "count": 1000,
+            "data_change_rate": 1.03125
+        },
+        "16": {
+            "encrpytion_memory_usage": 2633.3343343343345,
+            "decrpytion_memory_usage": 2558.6636636636636,
+            "encrpytion_average_execution_time": 3.527722321916838e-05,
+            "decrpytion_average_execution_time": 3.059405460114683e-05,
+            "raw_data_size": 16.0,
+            "encrypted_data_size": 24.0,
+            "latency": 0.008336677708271727,
+            "count": 999,
+            "data_change_rate": 1.5
+        },
+        "512": {
+            "encrpytion_memory_usage": 3958.89,
+            "decrpytion_memory_usage": 4291.179,
+            "encrpytion_average_execution_time": 5.511670582927763e-05,
+            "decrpytion_average_execution_time": 4.654260125244036e-05,
+            "raw_data_size": 512.0,
+            "encrypted_data_size": 520.0,
+            "latency": 0.008337493046542613,
+            "count": 1000,
+            "data_change_rate": 1.015625
+        },
+        "2048": {
+            "encrpytion_memory_usage": 10738.472472472473,
+            "decrpytion_memory_usage": 10092.264264264264,
+            "encrpytion_average_execution_time": 9.968246549933783e-05,
+            "decrpytion_average_execution_time": 9.362008441840899e-05,
+            "raw_data_size": 2048.0,
+            "encrypted_data_size": 2056.0,
+            "latency": 0.008664550644170628,
+            "count": 999,
+            "data_change_rate": 1.00390625
+        }
+    }
+}

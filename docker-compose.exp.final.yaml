@@ -13,7 +13,7 @@ services:
       MODE: publisher
       RANDOM_DATA_TYPE: exp
       EXP_CIPHERS: AES,Blowfish,Camellia,CAST5,IDEA,SEED,TripleDES
-      EXP_SIZES: 16,64,128,256,512,1024,2048
+      EXP_SIZES: 16,32,64,128,256,512,1024,2048
       EXP_SAMPLES: 1000
       EXP_KEY: RbSRvz9PaBTj6Qqv
       RANDOM_DATA_INTERVAL: 50
@@ -37,7 +37,7 @@ services:
       MODE: subscriber
       RANDOM_DATA_TYPE: exp
       EXP_CIPHERS: AES,Blowfish,Camellia,CAST5,IDEA,SEED,TripleDES
-      EXP_SIZES: 16,64,128,256,512,1024,2048
+      EXP_SIZES: 16,32,64,128,256,512,1024,2048
       EXP_SAMPLES: 1000
       EXP_KEY: RbSRvz9PaBTj6Qqv
       DOWNSTREAM_SUBSCRIBE_TOPICS: "#"

@@ -78,70 +78,72 @@ analysis = {}
 n = 0
 
 for row in rows:
-    n += 1
-    print("Progress: " + str(n) + " / " + str(len(rows)))
-    trace_id = row[0]
-    # publisher-app-1
-    publisher_app_1_span_id = get_span_id(trace_id, 'publisher-app-1')
-    span_values = get_all_values(trace_id, publisher_app_1_span_id)
-    encrypt_memory_usage = int(filter_values(span_values, 'peak_memory_usage'))
-    publisher_raw_data_size = int(filter_values(span_values, 'raw_data_size'))
-    encrypted_data_size = int(filter_values(span_values, 'encrypted_data_size'))
-    encrypt_average_execution_time = float(filter_values(span_values, 'average_execution_time'))
-    cipher_payload = json.loads(filter_values(span_values, 'cipher_payload'))
-    cipher_algorithm = cipher_payload['algorithm']
-    publisher_app_1_timing = get_timing(trace_id, 'publisher-app-1')
-    # gateway-app-1
-    # gateway_app_1_timing = get_timing(trace_id, 'gateway-app-1')
-    # gateway-app-2
-    # gateway_app_2_timing = get_timing(trace_id, 'gateway-app-2')
-    # gateway-app-3
-    # gateway_app_3_timing = get_timing(trace_id, 'gateway-app-3')
-    # subscriber-app-1
-    subscriber_app_1_span_id = get_span_id(trace_id, 'subscriber-app-1')
-    span_values = get_all_values(trace_id, subscriber_app_1_span_id)
-    decrypt_average_execution_time = float(filter_values(span_values, 'average_execution_time'))
-    subscriber_raw_data_size = int(filter_values(span_values, 'raw_data_size'))
-    decrypted_data_size = int(filter_values(span_values, 'decrypted_data_size'))
-    decrypt_memory_usage = int(filter_values(span_values, 'peak_memory_usage'))
-    cipher_payload = json.loads(filter_values(span_values, 'cipher_payload'))
-    cipher_algorithm = cipher_payload['algorithm']
-    subscriber_app_1_timing = get_timing(trace_id, 'subscriber-app-1')
+    try:
+        n += 1
+        print("Progress: " + str(n) + " / " + str(len(rows)))
+        trace_id = row[0]
+        # publisher-app-1
+        publisher_app_1_span_id = get_span_id(trace_id, 'publisher-app-1')
+        span_values = get_all_values(trace_id, publisher_app_1_span_id)
+        encrypt_memory_usage = int(filter_values(span_values, 'peak_memory_usage'))
+        publisher_raw_data_size = int(filter_values(span_values, 'raw_data_size'))
+        encrypted_data_size = int(filter_values(span_values, 'encrypted_data_size'))
+        encrypt_average_execution_time = float(filter_values(span_values, 'average_execution_time'))
+        cipher_payload = json.loads(filter_values(span_values, 'cipher_payload'))
+        cipher_algorithm = cipher_payload['algorithm']
+        publisher_app_1_timing = get_timing(trace_id, 'publisher-app-1')
+        # gateway-app-1
+        # gateway_app_1_timing = get_timing(trace_id, 'gateway-app-1')
+        # gateway-app-2
+        # gateway_app_2_timing = get_timing(trace_id, 'gateway-app-2')
+        # gateway-app-3
+        # gateway_app_3_timing = get_timing(trace_id, 'gateway-app-3')
+        # subscriber-app-1
+        subscriber_app_1_span_id = get_span_id(trace_id, 'subscriber-app-1')
+        span_values = get_all_values(trace_id, subscriber_app_1_span_id)
+        decrypt_average_execution_time = float(filter_values(span_values, 'average_execution_time'))
+        subscriber_raw_data_size = int(filter_values(span_values, 'raw_data_size'))
+        decrypted_data_size = int(filter_values(span_values, 'decrypted_data_size'))
+        decrypt_memory_usage = int(filter_values(span_values, 'peak_memory_usage'))
+        cipher_payload = json.loads(filter_values(span_values, 'cipher_payload'))
+        cipher_algorithm = cipher_payload['algorithm']
+        subscriber_app_1_timing = get_timing(trace_id, 'subscriber-app-1')
 
-    latency = subscriber_app_1_timing[0] - publisher_app_1_timing[0] + decrypt_average_execution_time
+        latency = subscriber_app_1_timing[0] - publisher_app_1_timing[0] + decrypt_average_execution_time
 
-    if cipher_algorithm not in analysis:
-        analysis[cipher_algorithm] = {}
+        if cipher_algorithm not in analysis:
+            analysis[cipher_algorithm] = {}
 
-    if publisher_raw_data_size not in analysis[cipher_algorithm]:
-        analysis[cipher_algorithm][publisher_raw_data_size] = {}
+        if publisher_raw_data_size not in analysis[cipher_algorithm]:
+            analysis[cipher_algorithm][publisher_raw_data_size] = {}
 
-    if "encrpytion_memory_usage" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_memory_usage"] = 0
-    if "decrpytion_memory_usage" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_memory_usage"] = 0
-    if "encrpytion_average_execution_time" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_average_execution_time"] = 0
-    if "decrpytion_average_execution_time" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_average_execution_time"] = 0
-    if "raw_data_size" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["raw_data_size"] = 0
-    if "encrypted_data_size" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["encrypted_data_size"] = 0
-    if "latency" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["latency"] = 0
-    if "count" not in analysis[cipher_algorithm][publisher_raw_data_size]:
-        analysis[cipher_algorithm][publisher_raw_data_size]["count"] = 0
+        if "encrpytion_memory_usage" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_memory_usage"] = 0
+        if "decrpytion_memory_usage" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_memory_usage"] = 0
+        if "encrpytion_average_execution_time" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_average_execution_time"] = 0
+        if "decrpytion_average_execution_time" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_average_execution_time"] = 0
+        if "raw_data_size" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["raw_data_size"] = 0
+        if "encrypted_data_size" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["encrypted_data_size"] = 0
+        if "latency" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["latency"] = 0
+        if "count" not in analysis[cipher_algorithm][publisher_raw_data_size]:
+            analysis[cipher_algorithm][publisher_raw_data_size]["count"] = 0
 
-    analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_memory_usage"] += encrypt_memory_usage
-    analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_memory_usage"] += decrypt_memory_usage
-    analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_average_execution_time"] += encrypt_average_execution_time
-    analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_average_execution_time"] += decrypt_average_execution_time
-    analysis[cipher_algorithm][publisher_raw_data_size]["raw_data_size"] += publisher_raw_data_size
-    analysis[cipher_algorithm][publisher_raw_data_size]["encrypted_data_size"] += encrypted_data_size
-    analysis[cipher_algorithm][publisher_raw_data_size]["latency"] += latency * 1e-6
-    analysis[cipher_algorithm][publisher_raw_data_size]["count"] += 1
-
+        analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_memory_usage"] += encrypt_memory_usage
+        analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_memory_usage"] += decrypt_memory_usage
+        analysis[cipher_algorithm][publisher_raw_data_size]["encrpytion_average_execution_time"] += encrypt_average_execution_time
+        analysis[cipher_algorithm][publisher_raw_data_size]["decrpytion_average_execution_time"] += decrypt_average_execution_time
+        analysis[cipher_algorithm][publisher_raw_data_size]["raw_data_size"] += publisher_raw_data_size
+        analysis[cipher_algorithm][publisher_raw_data_size]["encrypted_data_size"] += encrypted_data_size
+        analysis[cipher_algorithm][publisher_raw_data_size]["latency"] += latency * 1e-6
+        analysis[cipher_algorithm][publisher_raw_data_size]["count"] += 1
+    except Exception as e:
+        print(e)
 
 for cipher_algorithm in analysis:
     for publisher_raw_data_size in analysis[cipher_algorithm]:
